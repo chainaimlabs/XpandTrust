@@ -19,3 +19,10 @@ utils = { path = "./Expander/utils" }
 circuit = { path = "./Expander/circuit" }
 rand = "0.8.5"
 rand_chacha = "0.3.1"
+actix-web = "4.10.2"
+serde = "1.0.219"
+
+
+[[bin]]
+name = "serve"
+path = "src/request.rs"
