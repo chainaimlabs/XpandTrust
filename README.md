@@ -26,6 +26,9 @@ Other files not included are Expander which is used to serve localhost:3030 for 
 
 ## Video
 
+https://www.youtube.com/watch?v=ovM7nPMkpkA
+
+
 ## Presentation 
 [XpandTrust.pptx](https://github.com/user-attachments/files/19176714/XpandTrust.pptx)
 
@@ -54,19 +57,16 @@ Other files not included are Expander which is used to serve localhost:3030 for 
 
 
 
-## In this boot camp, we have tried to enhance our implementation, by trying out one part of our
+## In this boot camp, 
 
-SCF-RWA project (on a MINA grant), with keyless technology from APTOS, and also get the Proof / Verification times
+We have tried enhance our implementation, by trying out one part of our SCF-RWA project (on a MINA grant), with keyless technology from APTOS, and also get the Proof / Verification times
 reduced. The implementation we are trying is the Multi-level Recursive Compliance in Supply Chain Finance
 
-
-Effective Web 3 Digitization needs more than a high-level hash of data but layers of
-Deep composition with MINIMAL Proof Generation and Verification footprint for Privacy-Protected
+Effective Web 3 Digitization needs more than a high-level hash of data but layers of Deep composition with MINIMAL Proof Generation and Verification footprint for Privacy-Protected
 Business-sensitive information.
 
 This is a Key Enabler for MSME Trade Finance Inclusivity.
 Enables key processes like Supply Chain Finance.The intent of that project is to functionally prove the veracity and accommodating the and privacy and business sensitivity needs of real-world use-cases that have to be bridged between web2 and web3.
-
 
 The current project Chainaim is working on is a a grant from MINA foundation, is a ZK-Snark based implementation in MINA extends in to many layers for proving business processes, bringing in standards for bpmn2.0, GS1, risk models and financial / compliance for institutional defi for compliance overarching tradfi and defi.
 We are making very good progress in this area in our current MINA ZK project.
