@@ -1,0 +1,15 @@
+[package]
+name = "Business"
+version = "1.0.0"
+authors = []
+
+[addresses]
+oracle_example = "0x3f0a8db44ee7b773f4a6b7d08a7ffbcd12d791152bae4c0246fd4c4a53505deb"
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]

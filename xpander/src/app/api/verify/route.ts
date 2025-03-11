@@ -13,6 +13,15 @@ export async function POST(request: Request) {
       });
 
       const result = await verifyResponse.text();
+      console.log(result)
+      const state = result == "success" ? "true" : "false"
+      const oracleRes = await fetch('http://localhost:3000/api/oracle', {
+         method: 'POST',
+         body: JSON.stringify({
+            state: state
+         })
+      });
+      console.log(oracleRes.ok)
       return new Response(result, {
          status: verifyResponse.ok ? 200 : 400
       });

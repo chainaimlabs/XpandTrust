@@ -1,46 +1,59 @@
 // app/api/update-boolean/route.ts
 import { NextResponse } from 'next/server';
-import { AptosClient, AptosAccount, TxnBuilderTypes } from 'aptos';
-import axios from 'axios';
+// import { AptosClient, AptosAccount, TxnBuilderTypes } from 'aptos';
+import { Aptos, AptosConfig, Ed25519PrivateKey, InputViewFunctionData, Network } from "@aptos-labs/ts-sdk";
 
-// Initialize Aptos client from environment variables
-const NODE_URL = process.env.APTOS_NODE_URL || 'http://127.0.0.1:8080';
-const PRIVATE_KEY = process.env.APTOS_PRIVATE_KEY;
+const network = Network.LOCAL;
+const config = new AptosConfig({ network });
+export const client = new Aptos(config);
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+// const pk = PrivateKey.formatPrivateKey(PRIVATE_KEY as string, "ed25519" as any)
 
-const client = new AptosClient(NODE_URL);
-const account = new AptosAccount(Buffer.from(PRIVATE_KEY!, 'hex'));
-
-async function fetchBooleanData(): Promise<boolean | null> {
-   try {
-      const response = await axios.get('http://localhost:3000/api/boolean-data');
-      return response.data.value;
-   } catch (error) {
-      console.error('Error fetching boolean data:', error);
-      return null;
-   }
+export const getSigner = async () => {
+   const privateKey = new Ed25519PrivateKey(PRIVATE_KEY as string);
+   const signer = await client.deriveAccountFromPrivateKey({ privateKey });
+   console.log(signer)
+   return signer
 }
 
-async function submitBooleanData(newValue: boolean): Promise<string> {
-   try {
-      const payload = {
-         type: 'entry_function_payload',
-         function: '0x1::boolean_data_oracle::update_boolean_data',
-         arguments: [newValue],
-         type_arguments: [],
-      };
 
-      const txnRequest = await client.generateTransaction(account.address(), payload);
-      const signedTxn = await client.signTransaction(account, txnRequest);
-      const transactionRes = await client.submitTransaction(signedTxn);
+//
+const acc = "3f0a8db44ee7b773f4a6b7d08a7ffbcd12d791152bae4c0246fd4c4a53505deb"
+const modle = "boolean_data_oracle"
 
-      return transactionRes.hash;
-   } catch (error) {
-      console.error('Error submitting transaction:', error);
-      throw new Error('Transaction submission failed');
-   }
+const writeAsyncModuleFunction = async (state: string) => {
+   const signer = await getSigner();
+   const txn = await client.transaction.build.simple({
+      sender: signer.accountAddress,
+      data: {
+         function: `${acc}::${modle}::update_boolean_data`,
+         typeArguments: [],
+         functionArguments: [state]
+      }
+   })
+   const commitedTxn = await client.signAndSubmitTransaction({
+      signer: signer,
+      transaction: txn
+   })
+   await client.waitForTransaction({ transactionHash: commitedTxn.hash })
+   console.log(`Commited Transaction: ${commitedTxn.hash
+      }`)
+   return commitedTxn.hash
 }
 
-export async function POST() {
+const viewBooleanFunction = async () => {
+   const payload: InputViewFunctionData = {
+      function: `${acc}::${modle}::get_boolean_data`,
+      typeArguments: [],
+      functionArguments: [`0x${acc}`]
+   }
+   const output = (await client.view({ payload }))
+   console.log(output)
+   return output
+}
+
+
+export async function GET() {
    try {
       // Validate environment setup
       if (!PRIVATE_KEY) {
@@ -49,18 +62,34 @@ export async function POST() {
             { status: 500 }
          );
       }
+      // const txHash = await writeAsyncModuleFunction("false");
+      const result = await viewBooleanFunction()
 
-      // Fetch and validate boolean data
-      const booleanData = await fetchBooleanData();
-      if (booleanData === null) {
+      return NextResponse.json({
+         success: true,
+         message: 'Boolean data updated successfully',
+         data: result
+      });
+
+   } catch (error) {
+      console.error('Error in update process:', error);
+      return NextResponse.json(
+         { error: 'Internal server error' },
+         { status: 500 }
+      );
+   }
+}
+export async function POST(req: Request) {
+   try {
+      const { state } = await req.json()
+      // Validate environment setup
+      if (!PRIVATE_KEY) {
          return NextResponse.json(
-            { error: 'Failed to fetch boolean data' },
+            { error: 'APTOS_PRIVATE_KEY not configured' },
             { status: 500 }
          );
       }
-
-      // Submit transaction to Aptos
-      const txHash = await submitBooleanData(booleanData);
+      const txHash = await writeAsyncModuleFunction(String(state));
 
       return NextResponse.json({
          success: true,

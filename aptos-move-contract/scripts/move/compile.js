@@ -1,22 +1,21 @@
-require("dotenv").config();
-const cli = require("@aptos-labs/ts-sdk/dist/common/cli/index.js");
+// require("dotenv").config();
+// const cli = require("@aptos-labs/ts-sdk/dist/common/cli/index.js");
 
-async function compile() {
+// async function compile() {
+//   //   if (!process.env.MODULE_PUBLISHER_ACCOUNT_ADDRESS) {
+//   //     throw new Error(
+//   //       "MODULE_PUBLISHER_ACCOUNT_ADDRESS variable is not set, make sure you have set the publisher account address"
+//   //     );
+//   //   }
 
-  if (!process.env.MODULE_PUBLISHER_ACCOUNT_ADDRESS) {
-    throw new Error(
-      "MODULE_PUBLISHER_ACCOUNT_ADDRESS variable is not set, make sure you have set the publisher account address",
-    );
-  }
+//   const move = new cli.Move();
 
-  const move = new cli.Move();
-
-  await move.compile({
-    packageDirectoryPath: "contract",
-    namedAddresses: {
-      // Compile module with account address
-      message_board_addr: process.env.MODULE_PUBLISHER_ACCOUNT_ADDRESS,
-    },
-  });
-}
-compile();
+//   await move.compile({
+//     //  packageDirectoryPath: "contract",
+//     //  namedAddresses: {
+//     //    // Compile module with account address
+//     //    // message_board_ addr: process.env.MODULE_PUBLISHER_ACCOUNT_ADDRESS,
+//     //  },
+//   });
+// }
+// compile();

@@ -1,6 +1,6 @@
 module oracle_example::boolean_data_oracle {
     use std::signer;
-    use aptos_framework::event;
+
 
     /// Stores the boolean data
     struct BooleanData has key {
@@ -15,7 +15,7 @@ module oracle_example::boolean_data_oracle {
     }
 
     /// Initialize the data storage
-    public fun initialize(account: &signer) {
+    public entry fun initialize(account: &signer) {
         move_to(account, BooleanData { value: false, last_updated: 0 });
     }
 
@@ -35,7 +35,7 @@ module oracle_example::boolean_data_oracle {
         */
     }
 
-    /// Read the latest boolean value
+
     #[view]
     public fun get_boolean_data(addr: address): bool acquires BooleanData {
         borrow_global<BooleanData>(addr).value

@@ -9,7 +9,7 @@ const Navbar = () => {
    const { activeAccount, disconnectKeylessAccount } = useKeylessAccounts();
    return (
       <div className="w-full flex justify-between bg-white/10 border-b-1 border-solid border-black backdrop-blur-2xl px-10 py-4">
-         <h1 className="text-xl">XpanderTrust</h1>
+         <h1 className="text-xl">XpandTrust</h1>
          {/* <button className="link-button" onClick={() => { }}>
             SIGNIN
          </button> */}
