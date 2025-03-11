@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/BPMN_Prover.js"
+    "src/components/homepage.tsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -5,6 +5,7 @@ import GoogleLogo from "../GoogleLogo";
 import { aptos } from "../core/aptos";
 import { Account } from "@aptos-labs/ts-sdk";
 
+
 function LoginPage() {
    const ephemeralKeyPair = useEphemeralKeyPair();
 
