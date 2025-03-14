@@ -1,53 +1,81 @@
 # XpandTrust
 
+XpandTrust addresses critical challenges in institutional DeFi compliance through advanced zero-knowledge (ZK) cryptography, offering a layered approach to privacy-preserving verification. The protocol leverages **ZK Expander** and **GKR-based recursion** to enable low-latency proof generation for complex compliance workflows while maintaining business confidentiality.
 Recursive low latency proof generation for institutional defi compliance using ZK Expander and GKR technology.
-
-We are at the crux of Institutional Defi and Tokenization.
-
-## Institutional Defi Workflows need layers of protocol level Trust
-
-                 For Deeply Composed Compliance of
-    		              Identity. Process. Risk. etc
-
-- ### Emerging Institutional Defi Needs Layers of Compliance - WITHOUT compromising Privacy / Business Sensitivity.
-
-- ### Needs effective integration with Web 2 technologies to provide ZK-Oracles.
-
-- ### Need Efficient ZK Provers for low latency proof / verification
-  
-
-
-## Project Structure
-
-- **/xpander** - frontend implementation including custom oracle
-- **/ecc2** - circuit created for compliance data verification ( a recurrsive structure for compilance ) . Provides multi-level compliance giving genuinenes of borrowers to the financial protocols via off-chain verification service, with a minimal and predictable on-chain footprint, incorporating many other parameters of the borrowers based on their business operations , supply chain relationships etc, that can be brought on-chain closer to web2 experience and web2 systems integrations. 
-
-Other files not included are Expander which is used to serve localhost:3030 for prove and verification endpoint
-
-## Video
-
-https://youtu.be/x8764FAoHOA
-
-
-## Presentation 
-[XpandTrust.pptx](https://github.com/user-attachments/files/19176714/XpandTrust.pptx)
-
-
-# Solution:
-
-## XpandTrust is a protocol level Recursion solution for ZK-RWA based on business standards( real-world apis )
-
-- in Expander Technology
-- is an enhanced re-implementation of a ZK-Snark solution that was a winner in the
-  in ZK Hack Montreal in Aug 2024,
 
 
 ![Slide3](https://github.com/user-attachments/assets/02a0e6b7-2f7b-45ae-b038-6582ccce1f7b)
 
 
+We are at the crux of Institutional Defi and Tokenization.
+
+                 For Deeply Composed Compliance of
+    		              Identity. Process. Risk. etc
+
+## What Defi needs
+- Emerging Institutional Defi Needs Layers of Compliance - WITHOUT compromising Privacy / Business Sensitivity.
+
+- Need for effective integration with Web 2 technologies to provide ZK-Oracles.
+
+- Need for Efficient ZK Provers for low latency proof / verification
+  
+## Video
+
+https://youtu.be/x8764FAoHOA
+
+
+## Project Structure
+
+- **/xpander** - frontend implementation including custom oracle
+- **/ecc2** - circuit created for compliance data verification ( a recurrsive structure for compilance ) . Provides multi-level compliance giving genuinenes of borrowers to the financial protocols via off-chain verification service, with a minimal and predictable on-chain footprint, incorporating many other parameters of the borrowers based on their business operations , supply chain relationships etc, that can be brought on-chain closer to web2 experience and web2 systems integrations.
+- **/aptos-move-contract** - Aptos smart contract showcasing XpandTrust oracle interaction with smart contract. Example use of XpandTrust for proof generation and verification on-chain.
+
+Other files not included are Expander which is used to serve localhost:3030 for prove and verification endpoint
+
 
 
 ![Slide7](https://github.com/user-attachments/assets/a88bf294-6c5c-4cd8-808f-d517c70dff71)
+
+## Core Innovations
+[XpandTrust.pptx](https://github.com/user-attachments/files/19176714/XpandTrust.pptx)
+1. Multi-Level Recursive Compliance
+  * Uses ZK-Snarks to create recursive proof structures that validata compliance across identity, risk assessment, and business processes (e.g supply chain relationships)
+  * The `/cc2` circuit implements a recursive verification system, allowing institutions to prove compliance without exposing sensitive data
+
+2. Integration with Web2 Systems
+  * ZK-Oracles bridge traditional APIs and blockchain networks, enabling real-world data (e.g credit scores, risk assestments, compliance data) to be cryptographically verified on-chain.
+  * Supports standards like GS1 for supply chian finance
+
+3. Performance Optimizatioin
+  * Achieves sub-second proof generation/verification using GKR-bases recursion, critical for high-frequency institutional Defi applications
+  * Reduces on-chain footprint thorugh selective disclosure, where only essential compliance metadata is stored publicly
+
+## Institutional Alignment
+XpandTrust's architecture aligns with emerging requirements in regulated Defi ecosystem like the XRP Ledger, which prioritizes:
+  * Permissioned access via decentralized identity (DID)
+  * Tokenized real-world assets (RWAs) requiring layered compliance.
+  * Integration with traditional finance (TradFi) risk models
+
+
+## Use Cases
+  * Supply Chain Finance: Validates supplier credentials and payment terms without exposing proprietary contracts.
+  * Institutional Lending: Enables underwriting bases on verified off-chain histories via Oracles.
+  * Tokenized RWAs: Prividing audit trails for asset-backed securities while preserving commercial confidentiality.
+
+## Technical Implementation
+  * Frontend `/xpander` : Next.js interface for proof orchestration, oracle integration and keyless login.
+  * Circuit `/ecc2` : Rust bases circuits optimized with ExpanderCompilerCollection for lightweight blockchain architecture
+  * Aptos Move Contract `/aptos-move-contract` : Aptos smart contract implementation showcasing oracle interaction with smart contract.
+
+
+
+XpandTrust’s approach directly addresses the compliance gaps highlighted in institutional DeFi roadmaps, offering a scalable framework for regulated financial applications. By reducing verification latency and ensuring privacy, it positions itself as a key enabler for the $30T RWA tokenization market19
+
+
+
+
+
+
 
 
   
